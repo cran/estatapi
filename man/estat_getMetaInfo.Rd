@@ -4,17 +4,19 @@
 \alias{estat_getMetaInfo}
 \title{getMetaInfo API}
 \usage{
-estat_getMetaInfo(appId, statsDataId, ...)
+estat_getMetaInfo(appId, statsDataId, lang = c("J", "E"), ...)
 }
 \arguments{
 \item{appId}{Application ID}
 
 \item{statsDataId}{ID of the statistical dataset}
 
+\item{lang}{Language of data. \code{"J"}(Japanese) or \code{"E"}(English).}
+
 \item{...}{Other parameters.}
 }
 \description{
-Get Meta-information about the statistical dataset vi e-Stat API.
+Get meta-information about the statistical dataset via e-Stat API.
 }
 \examples{
 \dontrun{
@@ -23,7 +25,7 @@ estat_getMetaInfo(appId = "XXXX", statsDataId = "0003065345")
 
 }
 \seealso{
-\url{http://www.e-stat.go.jp/api/e-stat-manual/#api_2_2}
-\url{http://www.e-stat.go.jp/api/e-stat-manual/#api_3_3}
+\url{http://www.e-stat.go.jp/api/e-stat-manual2-1/#api_2_2}
+\url{http://www.e-stat.go.jp/api/e-stat-manual2-1/#api_3_3}
 }
 

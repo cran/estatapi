@@ -4,17 +4,28 @@
 \alias{estat_getStatsData}
 \title{getStatsData API}
 \usage{
-estat_getStatsData(appId, statsDataId, ...)
+estat_getStatsData(appId, statsDataId, startPosition = NULL, limit = NULL,
+  lang = c("J", "E"), .fetch_all = TRUE, ...)
 }
 \arguments{
 \item{appId}{application ID}
 
 \item{statsDataId}{ID of the statistical dataset}
 
-\item{...}{Other parameters.}
+\item{startPosition}{Integer. The the first record to get.}
+
+\item{limit}{Integer. Max number of records to get.}
+
+\item{lang}{Language of data. \code{"J"}(Japanese) or \code{"E"}(English).}
+
+\item{.fetch_all}{Whether to fetch all records when the number of records
+is larger than 100,000.}
+
+\item{...}{Other parameters like \code{lvCat01} and \code{cdCat01}.
+See \code{Other parameters} section for more details.}
 }
 \description{
-Get some statistical data from e-stat API.
+Get some statistical data via e-Stat API.
 }
 \section{Other parameters}{
 
@@ -47,25 +58,42 @@ For every detailed information, please visit the URL in See Also.
    The code of the last area to select. The format is the same way like \code{cdTabTo}
  \item \code{lvCat01}, \code{cdCat01}, \code{cdCat01From}, \code{cdCat01To}, ...:
    The same way like above.
- \item \code{startPosition}:
-   integer. The the first record to get.
- \item \code{limit}:
-   integer. Max number of records to get.
 }
 }
 \examples{
 \dontrun{
+# fetch all data, which may take time
+estat_getStatsData(
+  appId = "XXXX",
+  statsDataId = "0003065345"
+)
+
+# fetch data up to 10 records
 estat_getStatsData(
   appId = "XXXX",
   statsDataId = "0003065345",
-  cdCat01 = c("008", "009", "010"),
-  limit = 3
+  limit = 10
 )
+
+# fetch data up to 100,000 records (max number of records available at once)
+estat_getStatsData(
+  appId = "XXXX",
+  statsDataId = "0003065345",
+  .fetch_all = FALSE
+)
+
+# fetch all data in the specifed category
+estat_getStatsData(
+  appId = "XXXX",
+  statsDataId = "0003065345",
+  cdCat01 = c("008", "009", "010")
+)
+
 }
 
 }
 \seealso{
-\url{http://www.e-stat.go.jp/api/e-stat-manual/#api_2_3}
-\url{http://www.e-stat.go.jp/api/e-stat-manual/#api_3_4}
+\url{http://www.e-stat.go.jp/api/e-stat-manual2-1/#api_2_3}
+\url{http://www.e-stat.go.jp/api/e-stat-manual2-1/#api_3_4}
 }
 
