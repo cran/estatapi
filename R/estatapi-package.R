@@ -1,10 +1,10 @@
 #' R Interface to e-Stat API
 #'
 #' @docType package
-#' @seealso \url{http://www.e-stat.go.jp/SG1/estat/eStatTopPortalE.do}
-#' @importFrom dplyr %>%
+#' @seealso <http://www.e-stat.go.jp/SG1/estat/eStatTopPortalE.do>
+#' @import rlang
 #' @name estatapi
-NULL
+"_PACKAGE"
 
 .onAttach <- function(...) {
   # Show credit in Japanese
